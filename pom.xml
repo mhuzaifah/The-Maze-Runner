@@ -12,7 +12,6 @@
 	<artifactId>themazerunner</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>themazerunner</name>
-	<description>An application that can run through any given maze using different running methods</description>
 	<properties>
 		<java.version>21</java.version>
 	</properties>
