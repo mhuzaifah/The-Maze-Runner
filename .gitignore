@@ -31,3 +31,18 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Compiled class file ###
+*.class
+
+### Log file ###
+*.log
+
+### Package Files ###
+*.jar
+
+### Maven Target directory ###
+target
+
+### MacOS X bs ###
+.DS_Store
