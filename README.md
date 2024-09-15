@@ -1,5 +1,5 @@
 # The Maze Runner
-![Logo](../frontend/public/logo.png)
+![Logo](assets/logo.png)
 
 ## Business Logic Specification
 
