@@ -11,7 +11,7 @@ public class DFSSolver implements MazeSolver {
      * @return Path from start to end
      */
     @Override
-    public Path solve(Maze maze) {
+    public Path solve(Maze maze, Runner runner) {
 
         Graph mazeGraph = new AdjacencyList();
         mazeGraph.mazeToGraph(maze);
@@ -34,6 +34,8 @@ public class DFSSolver implements MazeSolver {
 
             Position node = stack.pop();
             ArrayList<Position> path = pathMap.get(node);
+
+            runner.addToRunSequence(node);
 
             if(node.equals(end)) {
                 outputPath = tracePath(path);

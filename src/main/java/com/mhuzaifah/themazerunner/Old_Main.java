@@ -4,7 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 
-public class PrevMain {
+public class Old_Main {
 
     private static final Logger logger = LogManager.getLogger();
 
@@ -12,14 +12,14 @@ public class PrevMain {
         logger.info("** Starting Maze Runner");
         
         try {
-            String filePath = "./examples/small.maz.txt";
+            String filePath = "./examples/tiny.maz.txt";
             BenchMarker benchMarker = new BenchMarker();
             benchMarker.startTimer();
             Maze maze = new Maze(filePath);
             benchMarker.endTimer();
             benchMarker.setTiming("map");
 
-            String method = "BFS";
+            String method = "tremaux";
             Path path = solveMaze(method, maze);
             System.out.println(path.getFactorizedForm());
         } catch (Exception e) {
@@ -41,6 +41,7 @@ public class PrevMain {
      */
     private static Path solveMaze(String method, Maze maze) throws Exception {
         MazeSolver solver = null;
+        Runner runner = new Runner();
         switch (method) {
             case "righthand" -> {
                 logger.debug("RightHand algorithm chosen.");
@@ -64,7 +65,7 @@ public class PrevMain {
         }
 
         logger.info("Computing path");
-        return solver.solve(maze);
+        return solver.solve(maze, runner);
     }
 
 

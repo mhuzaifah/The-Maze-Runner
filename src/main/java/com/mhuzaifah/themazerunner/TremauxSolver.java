@@ -1,5 +1,7 @@
 package com.mhuzaifah.themazerunner;
 
+import java.util.*;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -13,11 +15,11 @@ public class TremauxSolver implements MazeSolver {
     private Maze maze;
 
     @Override
-    public Path solve(Maze maze) {
+    public Path solve(Maze maze, Runner runner) {
         this.maze = maze;
         marks = new int[maze.getSizeY()][maze.getSizeX()];
         logger.debug("Marking entrances...");
-        markEntrances();
+        markEntrances(runner);
         logger.debug("Tracing path...");
         return tracePath();
     }
@@ -25,10 +27,12 @@ public class TremauxSolver implements MazeSolver {
     /**
      * Mark entrances in marks 2D array.
      */
-    private void markEntrances() {
+    private void markEntrances(Runner runner) {
         Position currentPos = maze.getStart();
         Position previousPos = null;
         marks[currentPos.y()][currentPos.x()] = 1;
+
+        runner.addToRunSequence(currentPos);
 
         while (!currentPos.equals(maze.getEnd())) {
             List<Position> neighbors = getMazeNeighbors(currentPos);
@@ -40,7 +44,7 @@ public class TremauxSolver implements MazeSolver {
                 newPos = previousPos;
             } else if (neighbors.size() == 1) {
                 // Move forward
-                newPos = neighbors.get(0);
+                newPos = neighbors.getFirst();
             } else {
                 // At junction
                 Position fewestMarks = pickNeighbor(neighbors);
@@ -60,6 +64,7 @@ public class TremauxSolver implements MazeSolver {
             }
 
             previousPos = currentPos;
+            runner.addToRunSequence(newPos);
             currentPos = newPos;
         }
         marks[maze.getEnd().y()][maze.getEnd().x()] = 1;
@@ -90,7 +95,7 @@ public class TremauxSolver implements MazeSolver {
      */
     private Position pickNeighbor(List<Position> neighbors) {
         neighbors.sort(Comparator.comparingInt(pos -> marks[pos.y()][pos.x()]));
-        return neighbors.get(0);
+        return neighbors.getFirst();
     }
 
     /**

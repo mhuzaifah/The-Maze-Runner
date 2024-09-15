@@ -12,7 +12,7 @@ public class BFSSolver implements MazeSolver {
      * @return Path from start to end
      */
     @Override
-    public Path solve(Maze maze) {
+    public Path solve(Maze maze, Runner runner) {
 
         Graph mazeGraph = new AdjacencyList();
         mazeGraph.mazeToGraph(maze);
@@ -35,6 +35,8 @@ public class BFSSolver implements MazeSolver {
 
             Position node = queue.remove();
             ArrayList<Position> path = pathMap.get(node);
+
+            runner.addToRunSequence(node);
 
             if(node.equals(end)) {
                 outputPath = tracePath(path);

@@ -1,0 +1,284 @@
+@import url('https://fonts.googleapis.com/css2?family=Aldrich&display=swap');
+
+/* GLOBAL PROPERTIES */
+*{
+    font-family: "Aldrich", sans-serif;
+}
+
+/* APP */
+.App {
+    text-align: center;
+    background: #0E0B16;
+}
+.App-logo {
+    height: 40vmin;
+    pointer-events: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+        animation: App-logo-spin infinite 20s linear;
+    }
+}
+.App-header {
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+.App-link {
+    color: #61dafb;
+}
+@keyframes App-logo-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* BUTTONS */
+.main-button {
+    align-items: center;
+    appearance: none;
+    background-image: radial-gradient(100% 100% at 100% 0, #923CB5 0, #250c2d 100%);
+    border: 0;
+    border-radius: 6px;
+    box-shadow: rgba(45, 35, 66, .3) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, rgb(86, 44, 108) 0 -3px 0 inset;
+    box-sizing: border-box;
+    color: #dbdfef;
+    cursor: pointer;
+    display: inline-flex;
+    height: 48px;
+    justify-content: center;
+    line-height: 1;
+    list-style: none;
+    overflow: hidden;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transition: box-shadow .15s,transform .15s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    will-change: box-shadow,transform;
+    font-size: 18px;
+}
+.main-button:hover {
+    box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #713d8a 0 -3px 0 inset;
+    transform: translateY(-2px);
+}
+.main-button:active {
+    box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #8649a1 0 -3px 0 inset;
+}
+.secondary-button {
+    align-items: center;
+    appearance: none;
+    background: #dbdfef;
+    color: black;
+    border: 0;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    box-sizing: border-box;
+    cursor: pointer;
+    padding: 0.75em 0.5em 0.5em;
+    text-align: center;
+    text-decoration: none;
+    transition: box-shadow .15s,transform .15s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    will-change: box-shadow,transform;
+    font-size: 18px;
+}
+.secondary-button:active {
+    background: #dbdfef;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 2px 5px;
+    transform: translateY(2px);
+}
+.secondary-button:disabled {
+    color: #7a7a7c;
+}
+
+/* SEGMENTED PICKER */
+.radio-inputs {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 0.5rem;
+    background-color: #dbdfef;
+    box-sizing: border-box;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: 0.35rem;
+    font-size: 16px;
+}
+.radio-inputs .radio {
+    flex: 1 1 auto;
+    text-align: center;
+}
+.radio-inputs .radio input {
+    display: none;
+}
+.radio-inputs .radio .name {
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+    border: none;
+    padding: .5rem 0;
+    color: rgba(51, 65, 85, 1);
+    transition: all .25s ease-out;
+}
+.radio-inputs .radio input:checked + .name {
+    background-image: radial-gradient(100% 100% at 100% 0, #923CB5 0, #250c2d 100%);
+    font-weight: 600;
+    color: #dbdfef;
+    transition: all 0.25s ease-out;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+/* DROPDOWN MENU */
+.menu-selector {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 0.5rem;
+    background-color: #dbdfef;
+    box-sizing: border-box;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: 0.5rem;
+    font-size: 16px;
+}
+
+/* STEPPER */
+.stepper {
+    border-radius: 0.5rem;
+    background-color: #dbdfef;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    font-size: 16px;
+    padding: 3.5%;
+}
+
+/* TEXT INPUT */
+.text-area {
+    min-height: 60%;
+    border: 2px solid #250c2d;
+    font-size: 20px;
+    padding: 1px 6px;
+    border-radius: 0.5rem;
+    background-color: #dbdfef;
+    box-sizing: border-box;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    color: black;
+}
+
+/* CARDS */
+.card {
+    appearance: none;
+    background-image: radial-gradient(100% 100% at 100% 0, #923CB5 0, #250c2d 100%);
+    border: 0;
+    border-radius: 5vh;
+    box-sizing: border-box;
+    box-shadow: 1px 1px 12px #000;
+    color: #dbdfef;
+    cursor: pointer;
+    line-height: 1;
+    list-style: none;
+    overflow: hidden;
+    text-decoration: none;
+    transition: box-shadow .15s,transform .15s;
+    touch-action: manipulation;
+    white-space: nowrap;
+    will-change: box-shadow,transform;
+    font-size: 1.5em;
+}
+.card p {
+    overflow-wrap: break-word;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+/* MAIN PAGE */
+.mainPage-container {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    gap: 10vw;
+    position: relative;
+}
+.mainPage-component-1 {
+}
+.mainPage-component-2 {
+    height: 100vh;
+    width: 35vw;
+}
+.mainPage-title {
+    font-size: 3.5em;
+    color: #dbdfef;
+    margin-bottom: 1em;
+}
+
+/* INIT INFO */
+.initInfo-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* MAZE */
+.maze-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.maze-row {
+    display: flex;
+}
+.maze-cell {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #ccc;
+}
+.maze-cell.wall {
+    background-color: #dbdfef;
+}
+.maze-cell.path {
+    background-color: #250c2d;
+}
+.maze-cell.runner {
+    background-image: radial-gradient(100% 100% at 100% 0, #923CB5 0, #250c2d 100%);
+}
+.maze-cell.visited {
+    background-color: #923CB5;
+}
+
+/* Maze Solving */
+.mazeSolving-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+}
+
+/*@media (max-width: 768px) {*/
+/*  .initInfo-container {*/
+/*    flex-direction: column;*/
+/*    align-items: stretch;*/
+/*  }*/
+

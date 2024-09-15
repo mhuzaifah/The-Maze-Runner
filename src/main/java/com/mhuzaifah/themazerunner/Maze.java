@@ -5,14 +5,11 @@ import org.apache.logging.log4j.Logger;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Maze {
     private static final Logger logger = LogManager.getLogger();
-    private final List<List<Boolean>> maze = new ArrayList<>();
+    private List<List<Boolean>> maze = new ArrayList<>();
     private final Position start;
     private final Position end;
 
@@ -39,6 +36,32 @@ public class Maze {
         }
         start = findStart();
         end = findEnd();
+    }
+
+    public Maze(List<List<Boolean>> mazeArr) throws Exception {
+        maze = mazeArr;
+        start = findStart();
+        end = findEnd();
+    }
+
+    public List<List<Boolean>> getMazeArr() {
+        return maze;
+    }
+
+    public void printLiveMaze(Position currentPos) {
+        for(int i = 0; i < this.maze.size(); i++) {
+            for (int j = 0; j < this.maze.get(0).size(); j++) {
+                if(currentPos.y() == i && currentPos.x() == j ) {
+                    System.out.print("+");
+                }
+                else if (this.maze.get(i).get(j)) {
+                    System.out.print("#");
+                } else {
+                    System.out.print(" ");
+                }
+            }
+            System.out.print("\n");
+        }
     }
 
     /**

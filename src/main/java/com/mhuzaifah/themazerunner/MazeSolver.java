@@ -7,5 +7,6 @@ public interface MazeSolver {
      * @param maze Maze to solve
      * @return Path that solves the provided maze
      */
-    Path solve(Maze maze);
+    Path solve(Maze maze, Runner runner);
+
 }
