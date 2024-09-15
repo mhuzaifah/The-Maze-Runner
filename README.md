@@ -1,5 +1,6 @@
 # The Maze Runner
-![Logo](assets/logo.png)
+
+<img src="assets/logo.png" alt="Logo" style="float: left; margin-right: 10px;">
 
 ## Business Logic Specification
 
