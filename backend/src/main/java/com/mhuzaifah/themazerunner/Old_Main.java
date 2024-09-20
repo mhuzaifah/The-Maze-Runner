@@ -9,26 +9,26 @@ public class Old_Main {
     private static final Logger logger = LogManager.getLogger();
 
     public static void main(String[] args) {
-        logger.info("** Starting Maze Runner");
-        
-        try {
-            String filePath = "./examples/tiny.maz.txt";
-            BenchMarker benchMarker = new BenchMarker();
-            benchMarker.startTimer();
-            Maze maze = new Maze(filePath);
-            benchMarker.endTimer();
-            benchMarker.setTiming("map");
-
-            String method = "tremaux";
-            Path path = solveMaze(method, maze);
-            System.out.println(path.getFactorizedForm());
-        } catch (Exception e) {
-            System.err.println("MazeSolver failed.  Reason: " + e.getMessage());
-            logger.error("MazeSolver failed.  Reason: " + e.getMessage());
-            logger.error("PATH NOT COMPUTED");
-        }
-
-        logger.info("End of MazeRunner");
+//        logger.info("** Starting Maze Runner");
+//
+//        try {
+//            String filePath = "./examples/tiny.maz.txt";
+//            BenchMarker benchMarker = new BenchMarker();
+//            benchMarker.startTimer();
+//            Maze maze = new Maze(filePath);
+//            benchMarker.endTimer();
+//            benchMarker.setTiming("map");
+//
+//            String method = "tremaux";
+//            Path path = solveMaze(method, maze);
+//            System.out.println(path.getFactorizedForm());
+//        } catch (Exception e) {
+//            System.err.println("MazeSolver failed.  Reason: " + e.getMessage());
+//            logger.error("MazeSolver failed.  Reason: " + e.getMessage());
+//            logger.error("PATH NOT COMPUTED");
+//        }
+//
+//        logger.info("End of MazeRunner");
     }
 
     /**

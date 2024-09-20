@@ -3,27 +3,39 @@ package com.mhuzaifah.themazerunner;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.*;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000/")
-@RequestMapping("api/")
+@CrossOrigin
+@RequestMapping("api")
 public class Controller {
 
     Maze maze;
 
-    @GetMapping("mazerunner")
+    @GetMapping("/test")
+    public String test() {
+        return "This is a test to check if the Spring Boot app is running correctly";
+    }
+
+
+    @GetMapping("/mazerunner")
     public ResponseEntity<List<List<Boolean>>> getMaze(@RequestParam String mazeFile) {
         try {
-            String mazeFilePath = "./examples/"+mazeFile;
-            maze = new Maze(mazeFilePath);
+            InputStream mazeFileStream = getClass().getClassLoader().getResourceAsStream("examples/" + mazeFile);
+            if (mazeFileStream == null)
+                return ResponseEntity.status(404).body(null); // File not found
+            BufferedReader mazeFileReader = new BufferedReader(new InputStreamReader(mazeFileStream));
+            maze = new Maze(mazeFileReader);
             return ResponseEntity.ok(maze.getMazeArr());
         } catch (Exception e) {
             return ResponseEntity.status(500).body(null);
         }
     }
 
-    @PostMapping("mazerunner")
+    @PostMapping("/mazerunner")
     public Map<String, Object> executeLogic(@RequestBody UserInput initInfo) {
         try {
             Runner runner = new Runner();

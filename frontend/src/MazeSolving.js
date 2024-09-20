@@ -7,7 +7,7 @@ import { MdRestartAlt } from "react-icons/md";
 function MazeSolving() {
 
     const navigate = useNavigate();
-    const { mazeArr, path, runnerSeq, mode } = useContext(MazeSolverInfoContext);
+    const { mazeArr, path, runnerSeq } = useContext(MazeSolverInfoContext);
     const [visitedCells, setVisitedCells] = useState(new Set());
     const mazeContainerRef = useRef(null);
     const [containerSize, setContainerSize] = useState({

@@ -8,7 +8,7 @@ import {MazeSolverInfoContext} from "./MazeSolverInfoContext";
 
 function InitInfo() {
 
-    const MAZERUNNER_REST_API_URL = 'http://localhost:8080/api/mazerunner';
+    const MAZERUNNER_REST_API_URL = "https://the-maze-runner-435718.nn.r.appspot.com/api/mazerunner";
     const { maze, setMaze, mode, setMode, method, setMethod, pathToVerify, setPathToVerify, mazeArr, setMazeArr, setPath, setRunnerSeq } = useContext(MazeSolverInfoContext);
     const { customMazeArr, width, setWidth, height, setHeight } = useContext(CustomMazeContext);
 
@@ -26,7 +26,7 @@ function InitInfo() {
 
         if(maze !== 'custom')
             fetchMaze();
-    }, [maze, setMazeArr, method]);
+    }, [maze, setMazeArr, method, MAZERUNNER_REST_API_URL]);
 
     const addMovement = (movement) => {
         setPathToVerify(prevPath => `${prevPath}${movement} `); // Appends the movement and a space for separation

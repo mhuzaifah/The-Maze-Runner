@@ -16,14 +16,14 @@ public class Maze {
     /**
      * Initialize a Maze from a file path.
      *
-     * @param filePath File path of the maze file
+     * @param fileReader BufferedReader Obj given the file path of the maze file
      * @throws Exception If maze cannot be read, or maze has no start or end
      */
-    public Maze(String filePath) throws Exception {
-        logger.debug("Reading the maze from file " + filePath);
-        BufferedReader reader = new BufferedReader(new FileReader(filePath));
+    public Maze(BufferedReader fileReader) throws Exception {
+//        logger.debug("Reading the maze from file " + filePath);
+//        BufferedReader reader = new BufferedReader(new FileReader(filePath));
         String line;
-        while ((line = reader.readLine()) != null) {
+        while ((line = fileReader.readLine()) != null) {
             List<Boolean> newLine = new ArrayList<>();
             for (int idx = 0; idx < line.length(); idx++) {
                 if (line.charAt(idx) == '#') {
