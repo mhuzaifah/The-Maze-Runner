@@ -27,4 +27,5 @@ jobs:
 
       # Building the turnkey artefact
       - name: Create executable jar with Maven
+        working-directory: ./backend
         run: mvn clean package -DskipTests
