@@ -8,13 +8,14 @@ import {MazeSolverInfoContext} from "./MazeSolverInfoContext";
 
 function InitInfo() {
 
-    const MAZERUNNER_REST_API_URL = "https://the-maze-runner-435718.nn.r.appspot.com/api/mazerunner";
+    const MAZERUNNER_REST_API_URL = process.env.SPRINGBOOT_API_URL;
     const { maze, setMaze, mode, setMode, method, setMethod, pathToVerify, setPathToVerify, mazeArr, setMazeArr, setPath, setRunnerSeq } = useContext(MazeSolverInfoContext);
     const { customMazeArr, width, setWidth, height, setHeight } = useContext(CustomMazeContext);
 
     useEffect(() => {
         const fetchMaze = async () => {
             try {
+                console.log(MAZERUNNER_REST_API_URL)
                 const response = await axios.get(MAZERUNNER_REST_API_URL, {
                     params: { mazeFile: maze }
                 })
