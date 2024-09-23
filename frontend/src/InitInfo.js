@@ -8,14 +8,17 @@ import {MazeSolverInfoContext} from "./MazeSolverInfoContext";
 
 function InitInfo() {
 
-    const MAZERUNNER_REST_API_URL = process.env.SPRINGBOOT_API_URL;
+    const MAZERUNNER_REST_API_URL = process.env.REACT_APP_SPRINGBOOT_API_URL;
     const { maze, setMaze, mode, setMode, method, setMethod, pathToVerify, setPathToVerify, mazeArr, setMazeArr, setPath, setRunnerSeq } = useContext(MazeSolverInfoContext);
     const { customMazeArr, width, setWidth, height, setHeight } = useContext(CustomMazeContext);
 
     useEffect(() => {
+
         const fetchMaze = async () => {
             try {
-                console.log(MAZERUNNER_REST_API_URL)
+                if (!MAZERUNNER_REST_API_URL) {
+                    console.error('API key is missing!');
+                }
                 const response = await axios.get(MAZERUNNER_REST_API_URL, {
                     params: { mazeFile: maze }
                 })
@@ -27,7 +30,7 @@ function InitInfo() {
 
         if(maze !== 'custom')
             fetchMaze();
-    }, [maze, setMazeArr, method, MAZERUNNER_REST_API_URL]);
+    }, [maze, setMazeArr, setMethod, MAZERUNNER_REST_API_URL]);
 
     const addMovement = (movement) => {
         setPathToVerify(prevPath => `${prevPath}${movement} `); // Appends the movement and a space for separation
@@ -99,7 +102,7 @@ function InitInfo() {
                                             <span className="name" style={{padding:'1rem'}} >Right Hand Rule</span>
                                         </label>
                                         <label className="radio">
-                                            <input type="radio" value="tremaux" checked={method === "tremaux"} onChange={(e) => setMethod(e.target.value)} />
+                                            <input type="radio" value="tremaux" checked={method === "tremaux"} onChange={(e) => {setMethod(e.target.value); setMaze("tiny.maz.txt")}} />
                                             <span className="name" style={{padding:'1rem'}} >Tremaux</span>
                                         </label>
                                         <label className="radio">
@@ -137,7 +140,6 @@ function InitInfo() {
                     <div style={{width:'100%', display:'flex', justifyContent:'space-evenly'}}>
                         <label htmlFor="maze" style={{fontSize:'1.5em'}} >Maze</label>
                         <select className="menu-selector" id="maze" value={maze} onChange={(e) => setMaze(e.target.value)} style={{width:'50%', alignSelf:'start'}} >
-                            {/* Populate options dynamically from backend or statically for now */}
                             <option value="tiny.maz.txt">Tiny</option>
                             <option value="small.maz.txt">Small</option>
                             <option value="rectangle.maz.txt">Rectangle</option>

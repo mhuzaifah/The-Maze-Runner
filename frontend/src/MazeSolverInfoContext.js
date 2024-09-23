@@ -6,17 +6,7 @@ export const MazeSolverInfoProvider = ({ children }) => {
 
     const [mode, setMode] = useState('solve');
     const [maze, setMaze] = useState('custom');
-    const [mazeArr, setMazeArr] = useState(
-        [
-            [true, true, true, true, true, true, true],
-            [true, false, false, false, false, false, true],
-            [true, false, true, true, true, false, true],
-            [true, false, false, false, false, false, true],
-            [true, false, true, true, true, false, true],
-            [true, false, false, false, false, false, true],
-            [true, true, true, true, true, true, true],
-        ]
-    );
+    const [mazeArr, setMazeArr] = useState(null);
     const [method, setMethod] = useState('righthand');
     const [pathToVerify, setPathToVerify] = useState('');
     const [path, setPath] = useState('');
