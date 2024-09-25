@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import MainPage from "./MainPage";
@@ -7,7 +7,12 @@ import MazeSolving from "./MazeSolving";
 import {CustomMazeProvider} from "./CustomMazeContext";
 import {MazeSolverInfoProvider} from "./MazeSolverInfoContext";
 function App() {
-  return (
+
+    useEffect(() => {
+        document.title = "The Maze Runner";
+    }, []);
+
+    return (
       <Router>
           <div className="App">
               <MazeSolverInfoProvider>
@@ -21,7 +26,7 @@ function App() {
               </MazeSolverInfoProvider>
           </div>
       </Router>
-  );
+    );
 }
 
 export default App;
