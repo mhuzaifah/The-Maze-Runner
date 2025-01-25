@@ -5,6 +5,7 @@ import Maze from "./Maze";
 import CustomMaze from "./CustomMaze";
 import {CustomMazeContext} from "./CustomMazeContext";
 import {MazeSolverInfoContext} from "./MazeSolverInfoContext";
+import Loader from "./Loader";
 
 function InitInfo() {
 
@@ -186,7 +187,7 @@ function InitInfo() {
                         ) : mazeArr ? (
                             <Maze maze={mazeArr} />
                         ) : (
-                            <p>Loading maze...</p> // Display loading message while fetching
+                            <Loader /> // Display loading animation while fetching
                         )}
                     </div>
                 </div>
